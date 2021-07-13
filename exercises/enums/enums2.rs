@@ -1,16 +1,21 @@
 // enums2.rs
 // Make me compile! Execute `rustlings hint enums2` for hints!
 
-// I AM NOT DONE
-
 #[derive(Debug)]
 enum Message {
-    // TODO: define the different variants used below
+    Move {x: i32, y: i32},
+    Echo(String),
+    ChangeColor(u8, u8, u8),
+    Quit,
 }
 
 impl Message {
     fn call(&self) {
-        println!("{:?}", &self);
+        match self {
+            Message::ChangeColor(r, g, b) => println!("RGB({:?}, {:?}, {:?})", r, g, b),
+            Message::Quit => println!("Quiting..."),
+            _ => println!("{:?}", &self),
+        }
     }
 }
 
